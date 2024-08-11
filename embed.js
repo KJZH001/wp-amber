@@ -524,8 +524,7 @@ class LeaflowAmber {
         right: 20px;
         z-index: 1000;
         border-radius: 10px;
-        // 加大对话框宽度 原本为50vh
-        width: 80vh;
+        width: 80vh;/*加大对话框宽度 原本为50vh*/
     }
     
     .leaflow-amber-header {
