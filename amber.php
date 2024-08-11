@@ -326,7 +326,7 @@ function amber_add_script_to_footer(): void {
 	$v          = LEAFLOW_AMBER_VERSION;
 	echo <<<EOF
 <!--直接调用本地最新的js <script src="{$plugin_dir}embed.js?t={$v}"></script>-->
-<script src="{$plugin_dir}embed.js"></script>
+<script src="{$plugin_dir}embed.js?t=2"></script>
     <script>
 if (window.leaflow_amber === undefined) {
     window.leaflow_amber = new LeaflowAmber($j)
