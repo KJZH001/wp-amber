@@ -148,7 +148,8 @@ class LeaflowAmber {
         const showChatButton = this.showChatButton()
 
         amberContainer.style.display = 'none';
-        showChatButton.style.display = 'flex';
+        // showChatButton.style.display = 'flex';
+        showChatButton.style.display = 'inline';
     }
 
     isOpen() {
