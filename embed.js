@@ -37,7 +37,8 @@ class LeaflowAmber {
         return document.querySelector("#leaflow-amber-chat-container")
     }
     showChatButton() {
-        return document.querySelector("#leaflow-amber-show-chat")
+        // return document.querySelector("#leaflow-amber-show-chat")
+        return document.querySelector("#moe-leaflow-amber-show-chat-button")
     }
     chatMessageContainer() {
         return document.querySelector("#leaflow-amber-chat-messages")
