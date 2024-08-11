@@ -156,7 +156,8 @@ class LeaflowAmber {
 
     amberConfig() {
         return {
-            server_url: "/wp-content/plugins/amber/stream.php"
+            // 修改以用于适配本地
+            server_url: "/wp-content/plugins/iVampireSP-amber/stream.php"
         }
     }
 
