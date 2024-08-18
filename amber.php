@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Amber
+Plugin Name: Moe-Amber
 Plugin URI: https://ivampiresp.com
 Description: 让你的 WordPress 接入 Amber API
 Version: 1.6.4
-Author: iVampireSP.com / Twilight
+Author: iVampireSP.com / Twilight & 晓空
 Author URI: https://ivampiresp.com
 */
 
