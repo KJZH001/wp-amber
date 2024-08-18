@@ -1,7 +1,7 @@
 <?php
 
 const COMMENTS_LIMIT = 5;
-CONST POSTS_LIMIT = 5;
+const POSTS_LIMIT = 5;
 
 header( "Content-Type: application/json" );
 
@@ -126,6 +126,23 @@ switch ($json["function_name"]) {
 		]);
 
 		break;
+	case "get_current_post_id":
+	case "get_selected_text":
+	case "close":
+		echo json_encode([
+			'success' => true,
+			'stop_generation' => true,
+			'content' => "",
+		]);
+		break;
+	case "show":
+	case "hide":
+	case "change_title":
+		echo json_encode([
+			'success' => true,
+			'content' => "",
+		]);
+		break;
 	default:
 		echo json_encode([
 			'success' => false,
@@ -149,7 +166,15 @@ function get_post_comment($post_id) {
 	$comment_content = "";
 	if ($comments) {
 		$comment_content .= "评论: " . PHP_EOL;
+
 		for ($i = 0; $i < count($comments); $i++) {
+			$admin = user_can($comments[$i]->user_id, 'update_core');
+			if ($admin) {
+				$comment_content .= "博主";
+			} else {
+				$comment_content .= "用户";
+			}
+
 			$comment_content .= "评论 $i 的 ID: " . $comments[$i]->comment_ID .
 			            ", 链接: " . get_comment_link($comments[$i]->comment_ID) .
 			            ", 内容: " . $comments[$i]->comment_content . PHP_EOL;

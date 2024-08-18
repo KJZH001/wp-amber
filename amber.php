@@ -3,12 +3,12 @@
 Plugin Name: Moe-Amber
 Plugin URI: https://ivampiresp.com
 Description: 让你的 WordPress 接入 Amber API
-Version: 1.6.4
+Version: 0.6.6
 Author: iVampireSP.com / Twilight & 晓空
 Author URI: https://ivampiresp.com
 */
 
-const LEAFLOW_AMBER_VERSION = '1.6.4';
+const LEAFLOW_AMBER_VERSION = '0.6.6';
 
 function amber_menu(): void {
 	add_options_page(
@@ -364,7 +364,7 @@ function amber_add_post_id_to_comment_form( $comment_registration ) {
 
 	global $post;
 	$post_id = $post->ID;
-	echo '<div data-amber-post-id="' . $post_id . '" style="display: none;"></div>';
+	echo '<div data-amber-post-id="' . $post_id . '"  data-amber-post-id-' . $post_id . '-answered="false"  style="display: none;"></div>';
 
 	remove_filter( current_filter(), __FUNCTION__ );
 
