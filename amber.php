@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Moe-Amber
-Plugin URI: https://ivampiresp.com
+Plugin URI: https://github.com/KJZH001/wp-amber
 Description: 让你的 WordPress 接入 Amber API
-Version: 0.6.6
+Version: 0.6.7-patch-9
 Author: iVampireSP.com / Twilight & 晓空
-Author URI: https://ivampiresp.com
+Author URI: https://blog.moeworld.tech/
 */
 
-const LEAFLOW_AMBER_VERSION = '0.6.6';
+const LEAFLOW_AMBER_VERSION = '0.6.7-patch-9';
 
 function amber_menu(): void {
 	add_options_page(
@@ -273,6 +273,7 @@ function amber_get_options() {
 	return get_option( 'amber_options' );
 }
 
+
 // 获取插件URL路径
 function leaflow_amber_get_plugin_url(): string {
 	$plugin_file = __FILE__;
@@ -327,6 +328,7 @@ function amber_add_script_to_footer(): void {
 	echo <<<EOF
 <!--直接调用本地最新的js <script src="{$plugin_dir}embed.js?t={$v}"></script>-->
 <script src="{$plugin_dir}embed.js?t=12"></script>
+<script src="{$plugin_dir}markdown.js?t={$v}"></script>
     <script>
 if (window.leaflow_amber === undefined) {
     window.leaflow_amber = new LeaflowAmber($j)
@@ -374,6 +376,21 @@ function amber_add_post_id_to_comment_form( $comment_registration ) {
 add_action( 'comment_form_before', function () {
 	add_filter( 'pre_option_comment_registration', 'amber_add_post_id_to_comment_form' );
 } );
+// add link style to header
+function amber_style_link_to_header() {
+	$options = amber_get_options();
 
+	// if not enable
+	if ( empty( $options['enable'] ) || $options['enable'] != 1 ) {
+		return;
+	}
+
+	$plugin_dir = leaflow_amber_get_plugin_url();
+	$v          = LEAFLOW_AMBER_VERSION;
+    $url = $plugin_dir . 'amber.css?t=' . $v;
+
+	echo '<link rel="stylesheet" type="text/css" href="' . esc_url( $url ) . '" />' . "\n";
+}
+add_action( 'wp_head', 'amber_style_link_to_header' );
 
 ?>
